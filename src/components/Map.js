@@ -5,14 +5,13 @@ function Map() {
   const [Data,setData]= useState([]);
   useEffect((longitude,latitude) => {
     fetchlotaion();
-    const URL =`https://api.openweathermap.org/data/2.5/onecall?lat=37.535744&lon=127.008768&
-    exclude=hourly,daily&appid=c13cc1190412a125332e2bf4620fa404`;
-    fetchData(URL);
   }, []);
-
-
-  const fetchData = async(URL)=>{
+  
+  
+  const fetchData = async(latitude,longitude)=>{
     setData(null);
+    const URL =`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&
+    exclude=hourly,daily&appid=c13cc1190412a125332e2bf4620fa404`;
     const response = await axios.get(URL);
     const b =new Date();
     console.log(response.data.daily);
@@ -28,6 +27,7 @@ function Map() {
       navigator.geolocation.getCurrentPosition(function(pos) {
         const latitude = pos.coords.latitude;
         const longitude = pos.coords.longitude;
+        fetchData(latitude,longitude);
         alert("현재 위치는 : " + latitude + ", "+ longitude);
     });
     } else {

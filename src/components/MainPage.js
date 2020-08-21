@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import Map from './Map';
 import Test from './Test';
+import GoogleMap from './GoogleMap';
 import { Input } from 'antd';
 
 
@@ -28,6 +29,7 @@ function MainPage() {
             }} placeholder="Basic usage" />
          
             <Map/>
+            <GoogleMap/>
         </MainPage>
         </>
         

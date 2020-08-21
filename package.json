@@ -8,8 +8,10 @@
     "@testing-library/user-event": "^7.1.2",
     "antd": "4.5.4",
     "axios": "0.19.2",
+    "google-maps-react": "2.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-kakao-maps": "0.0.13",
     "react-naver-maps": "0.0.13",
     "react-scripts": "3.4.3",
     "styled-components": "5.1.1"

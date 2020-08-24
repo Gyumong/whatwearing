@@ -1,12 +1,18 @@
 import React,{useState,useEffect} from 'react'
-import axios from 'axios';
+
 function GoogleMap() {
 
-    const [addr, setAddr] = useState();
+    const [addressName, setAddressName] = useState();
+    const [test, setTest] = useState('');
+    const onChangeAddr= e => setTest(e.target.value);
+    const onClick= ()=>{
+        alert(test);
+    };
 
-    const onChange=(e)=>{
-        const { value, name } = e.target; 
-        
+    const onKeyPress= e=>{
+        if(e.key==='Enter'){
+            onClick();
+        }
     }
 
     const { kakao } = window; 
@@ -14,24 +20,29 @@ function GoogleMap() {
 
     const callback = function(result, status) {
         if (status === kakao.maps.services.Status.OK) {
-            setAddr(result[0].address.address_name);
-            console.log(result);
+            setAddressName(result[0].address.addressName);
+            console.log(result[0].address);
+            console.log(addressName)
         }
     };
     
-     geocoder.addressSearch('서울시 송파구 문정동', callback);   
+     geocoder.addressSearch(`${test}`, callback);   
   
     
     return (
         <>
-             <form id="addPlayerFrm" onSubmit={function (event) {
-           event.preventDefault();
-           console.log(event.target.name.value);
-       }}>
-           <p><input type="text" name="name" placeholder="full name"></input></p>
-           <p><input type="submit" value="제출"></input></p>
-           <p>{addr}</p>
-       </form>
+
+           <p><input type="text" placeholder="주소를 적어주세요"
+           onChange={onChangeAddr}
+            value={test}
+           ></input></p>
+           <p><input type="submit"
+            onKeyPress={onKeyPress}
+            onClick={onClick}
+           />
+           </p>
+           <p>{test}</p>
+
       </>
     )
 }

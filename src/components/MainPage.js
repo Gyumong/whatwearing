@@ -16,6 +16,9 @@ function MainPage() {
         align-items:center;
         width:100%;
         height:100vh;
+        h1{
+            margin-bottom:2rem;
+        }
     `;
     return (
         <>
@@ -23,13 +26,8 @@ function MainPage() {
             <h1>
             What are you wearing today?    
             </h1>
-            <Input style={{
-                width:"200px",
-                margin:"2rem"
-            }} placeholder="Basic usage" />
-         
-            <Map/>
             <GoogleMap/>
+            <Map/>
         </MainPage>
         </>
         

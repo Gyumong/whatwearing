@@ -1,12 +1,15 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect} from 'react';
+import { Input,Button } from 'antd';
 
 function GoogleMap() {
 
     const [addressName, setAddressName] = useState();
-    const [test, setTest] = useState('');
-    const onChangeAddr= e => setTest(e.target.value);
+    const [searchAddr, setSearchAddr] = useState('');
+    const [xposition,setXposition]= useState('');
+    const [yposition,setYposition]= useState('');
+    const onChangeAddr= e => setSearchAddr(e.target.value);
     const onClick= ()=>{
-        alert(test);
+        alert(searchAddr);
     };
 
     const onKeyPress= e=>{
@@ -20,28 +23,37 @@ function GoogleMap() {
 
     const callback = function(result, status) {
         if (status === kakao.maps.services.Status.OK) {
-            setAddressName(result[0].address.addressName);
+            setAddressName(result[0].address.address_name);
+            setXposition(result[0].address.x);
+            setYposition(result[0].address.y);
             console.log(result[0].address);
             console.log(addressName)
+            console.log(xposition);
+            console.log(yposition);
         }
     };
     
-     geocoder.addressSearch(`${test}`, callback);   
+     geocoder.addressSearch(`${searchAddr}`, callback);   
   
     
     return (
         <>
 
-           <p><input type="text" placeholder="주소를 적어주세요"
+           <p><Input type="text" placeholder="주소를 적어주세요"
            onChange={onChangeAddr}
-            value={test}
-           ></input></p>
-           <p><input type="submit"
+            value={searchAddr}
+           ></Input></p>
+           <p><Button type="submit"
             onKeyPress={onKeyPress}
             onClick={onClick}
-           />
+           >
+               확인
+           </Button>
            </p>
-           <p>{test}</p>
+           <p>
+               {addressName && `${addressName}의 날씨는?`}
+               
+           </p>
 
       </>
     )

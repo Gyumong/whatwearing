@@ -3,15 +3,23 @@ import axios from 'axios';
 import { API_URL } from './Config';
 import { Descriptions } from 'antd';
 import styled from 'styled-components';
+import GoogleMap from './GoogleMap';
 
-const Map=()=> {
+const Map=({xposition,yposition})=> {
   const [currentData,setCurrentData]= useState([]);
   const [Data, setData] = useState([]);
   const [weather,setWeather]=useState([]);
-  const [time, setTime] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const fetchAddress=async ()=>{
+    const AddressURL= `https://api.openweathermap.org/data/2.5/onecall?lat=${yposition}&lon=${xposition}&
+    exclude=hourly,daily&appid=c13cc1190412a125332e2bf4620fa404`;
+    const UserResponse= await axios.get(AddressURL);
+    console.log(UserResponse.data);
+  }
+  fetchAddress();
   useEffect((longitude,latitude) => {
+
 
     const fetchlotaion=()=>{
       if('geolocation' in navigator) {
@@ -23,8 +31,6 @@ const Map=()=> {
           const URL =`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&
           exclude=hourly,daily&appid=c13cc1190412a125332e2bf4620fa404`;
           fetchData(URL);
-
-          
       });
       } else {
         /* 위치정보 사용 불가능 */
@@ -65,7 +71,7 @@ const Map=()=> {
   return (
     <Descriptions  style={{
       width:"500px"
-    }}title="User Info">
+    }}>
     <Descriptions.Item label="위치">{Data.timezone}</Descriptions.Item>
   <Descriptions.Item label="현재 온도">{Math.round(currentData.temp-273.15)}</Descriptions.Item>
     <Descriptions.Item label="날씨">{weather.main}</Descriptions.Item>

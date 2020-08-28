@@ -27,7 +27,7 @@ function MainPage() {
             What are you wearing today?    
             </h1>
             <KakaoMap/>
-            <Map/>
+            {/* <Map/> */}
         </MainPage>
         </>
         

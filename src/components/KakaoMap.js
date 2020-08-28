@@ -8,7 +8,7 @@ function GoogleMap() {
     const [searchAddr, setSearchAddr] = useState('');
     const [xposition,setXposition]= useState('');
     const [yposition,setYposition]= useState('');
-
+    const [weather,setWeather] = useState('');
     const [KakaoData,setKakaoData] =useState([]);
     const [search,setSearch]= useState('');
     const onChangeAddr= e => setSearchAddr(e.target.value);
@@ -40,6 +40,7 @@ function GoogleMap() {
                     exclude=hourly,daily&appid=c13cc1190412a125332e2bf4620fa404`;
                     const UserResponse= await axios.get(AddressURL);
                     setKakaoData(UserResponse.data.current)
+                    setWeather(UserResponse.data.current.weather[0])
                     console.log(UserResponse.data.current);
             }
             {xposition && yposition &&
@@ -76,8 +77,8 @@ function GoogleMap() {
         }}>
             <Descriptions.Item label="위치">{addressName}</Descriptions.Item>
             <Descriptions.Item label="현재 온도">{Math.round(KakaoData.temp-273.15)}</Descriptions.Item>
-            {/* <Descriptions.Item label="날씨">{weather.main}</Descriptions.Item>
-            <Descriptions.Item label="습도">{currentData.humidity}</Descriptions.Item> */}
+            <Descriptions.Item label="날씨">{weather.description}</Descriptions.Item>
+            <Descriptions.Item label="습도">{KakaoData.humidity}</Descriptions.Item>
         </Descriptions>
         }
       </>

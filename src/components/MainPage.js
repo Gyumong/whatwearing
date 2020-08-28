@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import Map from './Map';
 import Test from './Test';
-import GoogleMap from './GoogleMap';
+import KakaoMap from './KakaoMap';
 import { Input } from 'antd';
 
 
@@ -26,7 +26,7 @@ function MainPage() {
             <h1>
             What are you wearing today?    
             </h1>
-            <GoogleMap/>
+            <KakaoMap/>
             <Map/>
         </MainPage>
         </>

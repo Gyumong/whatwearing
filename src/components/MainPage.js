@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Map from './Map';
 import Test from './Test';
 import KakaoMap from './KakaoMap';
+
 import { Input } from 'antd';
 
 
@@ -11,6 +12,7 @@ function MainPage() {
 
     const MainPage= styled.div`
         display:flex;
+        background:#0066ee;
         flex-direction:column;
         justify-content:center;
         align-items:center;
@@ -27,7 +29,7 @@ function MainPage() {
             What are you wearing today?    
             </h1>
             <KakaoMap/>
-            {/* <Map/> */}
+          {/* <Map/> */}
         </MainPage>
         </>
         

@@ -1,8 +1,20 @@
 import React,{useState,useEffect} from 'react';
+import GridCard from './GridCard';
 import { Input,Button,Descriptions  } from 'antd';
 import axios from 'axios';
+import styled from 'styled-components';
 
-function GoogleMap() {
+const KakaoBlock = styled.div`
+    box-sizing:border-box;
+    background:white;
+    margin:0;
+    padding:1rem;
+    border:1px solid blue;
+    border-radius:12px;
+`;
+function GoogleMap(props) {
+
+    const [location,setLocation]= useState(null);
 
     const [addressName, setAddressName] = useState('');
     const [searchAddr, setSearchAddr] = useState('');
@@ -31,7 +43,7 @@ function GoogleMap() {
             setAddressName(result[0].address.address_name);
             setXposition(result[0].address.x);
             setYposition(result[0].address.y);
-            console.log(result[0].address);
+            console.log(result[0]);
             console.log(addressName)
             console.log(xposition);
             console.log(yposition);
@@ -55,6 +67,7 @@ function GoogleMap() {
     
     return (
         <>
+        <KakaoBlock>
 
            <p><Input type="text" placeholder="주소를 적어주세요"
             onChange={onChangeAddr}
@@ -81,6 +94,10 @@ function GoogleMap() {
             <Descriptions.Item label="습도">{KakaoData.humidity}</Descriptions.Item>
         </Descriptions>
         }
+      </KakaoBlock>
+      <GridCard
+        Weather={weather}
+      />
       </>
     )
 }

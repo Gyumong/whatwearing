@@ -16,7 +16,7 @@ const Map=()=> {
     const fetchlotaion=()=>{
       if('geolocation' in navigator) {
         /* 위치정보 사용 가능 */
-        navigator.geolocation.getCurrentPosition(function(pos) {
+        navigator.geolocation.getCurrentPosition((pos)=> {
           const latitude = pos.coords.latitude;
           const longitude = pos.coords.longitude;
           alert("현재 위치는 : " + latitude + ", "+ longitude);

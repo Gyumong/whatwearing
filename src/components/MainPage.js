@@ -8,11 +8,11 @@ import { Input } from 'antd';
 
 
 
-function MainPage() {
+function MainPage(props) {
 
     const MainPage= styled.div`
         display:flex;
-        background:#0066ee;
+        background:#3a68f9;
         flex-direction:column;
         justify-content:center;
         align-items:center;
@@ -28,7 +28,7 @@ function MainPage() {
             <h1>
             What are you wearing today?    
             </h1>
-            <KakaoMap/>
+            <KakaoMap Address={props.Address}/>
           {/* <Map/> */}
         </MainPage>
         </>

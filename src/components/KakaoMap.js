@@ -4,6 +4,8 @@ import { Input,Button,Descriptions  } from 'antd';
 import axios from 'axios';
 import styled from 'styled-components';
 
+
+
 const KakaoBlock = styled.div`
     box-sizing:border-box;
     background:white;
@@ -12,7 +14,8 @@ const KakaoBlock = styled.div`
     border:1px solid blue;
     border-radius:12px;
 `;
-function GoogleMap(props) {
+function KakaoMap(props) {
+    const Address = props.Address;
 
     const [location,setLocation]= useState(null);
 
@@ -60,7 +63,7 @@ function GoogleMap(props) {
             }
         }
     };
-    geocoder.addressSearch(`${searchAddr}`, callback);   
+    geocoder.addressSearch(`${Address}`, callback);   
 }, [searchAddr,addressName,xposition,yposition])
     
   
@@ -102,4 +105,4 @@ function GoogleMap(props) {
     )
 }
 
-export default GoogleMap;
+export default KakaoMap;

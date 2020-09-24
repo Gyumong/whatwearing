@@ -68,27 +68,21 @@ const TextBar = styled.div`
     }
     
 `;
-function Loading(props) {
+function Loading() {
     const [on, seton] = useState(false);
     const history = useHistory();
-    const Address=props.Address;
-    const setAddress=()=>{
-        const {setAddress} = this.props;
-        setAddress(ChangeAddress);
-    }
-    const [ChangeAddress, setChangeAddress] = useState(Address);
+
+    const [Address, setAddress] = useState('');
+    const [ChangeAddress, setChangeAddress] = useState('');
     const onKeyPress= e=>{
         if(e.key==='Enter'){
-            setChangeAddress(e.target.value)
-            setAddress(ChangeAddress);
-            console.log(ChangeAddress)
-            console.log(Address);
+            setAddress(e.target.value);
         }
     }
 
     const onClick = e =>{
-        setChangeAddress(e.target.value)
-        console.log(Address);
+        setAddress(e.target.value)
+        console.log(Address)
     }
     return (
         <>
@@ -99,7 +93,7 @@ function Loading(props) {
                 <h2>주소와 성별을 입력해주세요^^</h2>
                 <h2>    
                 주소: <input type="name" placeholder="ex) 잠실" onChange={(e)=>{
-                    setChangeAddress(e.target.value)
+                    setAddress(e.target.value)
                 }} onKeyPress={onKeyPress}/>
                 <Link to="/main">
                 <button onClick={onClick } >확인</button>

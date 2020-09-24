@@ -6,14 +6,11 @@ import {Route,Link,Switch} from 'react-router-dom';
 
 function App() {
 
-  const [Address, setAddress] = useState('');
+
 
   return (
     <Switch>
-      <Route path="/" exact>
-      <Loading Address={Address} setAddress={setAddress}/>
-      </Route>
-      <Route path="/main">
+      <Route path="/">
         <MainPage/>
       </Route>
     </Switch>

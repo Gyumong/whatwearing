@@ -3,7 +3,18 @@ import axios from 'axios';
 import { API_URL } from './Config';
 import styled from 'styled-components';
 import {Row, Col } from "antd";
+import GridCard from './GridCard';
 
+
+const IconBlock = styled.div`
+  width:auto;
+  height:120px;
+  background-position:center,center;
+  position:relative;
+  background-size:contain;
+  background-repeat:no-repeat;
+  background:url('${props=>props.image}');
+`;
 const WeatherBlock = styled.div`
     border:2px solid #0066ff;
     margin:0 auto;
@@ -46,6 +57,8 @@ const Map=()=> {
   const [time, setTime] = useState(null);
   const [loading, setLoading] = useState(false);
   const [uvi, setuvi] = useState('');
+  const [dailyData, setdailyData] = useState([]);
+  const [temp,setTemp] = useState([]);
 
   useEffect((longitude,latitude) => {
     const fetchlotaion=()=>{
@@ -74,21 +87,34 @@ const Map=()=> {
       setData(response.data);
       setCurrentData(response.data.current);
       setWeather(response.data.current.weather[0]);
+      setdailyData(...response.data.daily);
+      setTemp(response.data.daily[0]);
+      
     }catch(e){
       console.log(e);
     }
     setLoading(false);
   };
   if (loading) return <div>로딩중..</div>;
-  
+console.log(Data)
+console.log(dailyData)
+
+const icon = weather.icon;
+console.log(icon)
+let iconurl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
   return (
+    <>
     <WeatherBlock>
+
               <Row gutter={[16, 16]}>
-                <Col lg={24} style={{textAlign:"center"}}>ㅇㅇ</Col>
+                <Col lg={24} style={{textAlign:"center"}}>
+                      {/* <Icon image={iconurl}/> */}
+                      <img style={{width:'120px'}} src= {iconurl} />
+                  </Col>
                 <Col lg={4} xs={24}>
                   <GridBox1>
-                    위치: {Data.timezone}
+                     강수확률: {dailyData.pop}
                   </GridBox1>
                 </Col>
                 <Col lg={4} xs={24}>
@@ -130,7 +156,15 @@ const Map=()=> {
                   </Col>
              </Row>
     </WeatherBlock>
+            <GridCard currentData={currentData} />
+    </>
   )
 };
+
+function Icon(props){
+  return(
+      <IconBlock image={props.image}/>
+  )
+}
 
 export default Map;

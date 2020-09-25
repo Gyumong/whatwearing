@@ -50,6 +50,10 @@ const GridBox4 = styled(GridBox)`
     border-color: #d6d8db;
 `;
 
+const GridBlock = styled.div`
+  padding-top:50px;
+  margin:0 auto;
+`;
 const Map=()=> {
   const [currentData,setCurrentData]= useState([]);
   const [Data, setData] = useState([]);
@@ -59,6 +63,8 @@ const Map=()=> {
   const [uvi, setuvi] = useState('');
   const [dailyData, setdailyData] = useState([]);
   const [temp,setTemp] = useState([]);
+
+  const Test = ["1","2","3","4","5","6","7","8",1,1,1,1,1,1,1,1]
 
   useEffect((longitude,latitude) => {
     const fetchlotaion=()=>{
@@ -155,8 +161,16 @@ let iconurl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
                   </GridBox2>
                   </Col>
              </Row>
+             <GridBlock>
+              <Row gutter={[16, 16]} justify={"center"} >
+                        {Test.map((a,i)=>(
+                        <>  
+                        <GridCard currentData={currentData} />
+                        </>
+                        ))}
+              </Row>
+             </GridBlock>
     </WeatherBlock>
-            <GridCard currentData={currentData} />
     </>
   )
 };

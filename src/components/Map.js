@@ -120,7 +120,7 @@ let iconurl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
                   </Col>
                 <Col lg={4} xs={24}>
                   <GridBox1>
-                     강수확률: {dailyData.pop}
+                     강수확률: {dailyData.pop*100}%
                   </GridBox1>
                 </Col>
                 <Col lg={4} xs={24}>

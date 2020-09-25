@@ -50,9 +50,28 @@ const GridBox4 = styled(GridBox)`
     border-color: #d6d8db;
 `;
 
+const TtitleBlock = styled.div`
+
+  padding: 40px 0 0 0;
+  margin-bottom: 30px;
+  h1{
+    margin: 0;
+    text-align: center;
+  }
+  @media screen and (max-width: 768px){
+    height: 52px;
+    line-height: 52px;
+    padding: 0 8px;
+    margin: 0;
+    h1{
+    font-size: 17px;
+    color: #000000;
+    font-weight: bold;
+    }
+  }
+`;
 const GridBlock = styled.div`
-  padding-top:50px;
-  margin:0 auto;
+
 `;
 const Map=()=> {
   const [currentData,setCurrentData]= useState([]);
@@ -161,6 +180,9 @@ let iconurl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
                   </GridBox2>
                   </Col>
              </Row>
+             <TtitleBlock>
+                <h1>당신을 위한 추천</h1>
+             </TtitleBlock>
              <GridBlock>
               <Row gutter={[16, 16]} justify={"center"} >
                         {Test.map((a,i)=>(

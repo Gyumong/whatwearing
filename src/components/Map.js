@@ -84,7 +84,11 @@ const Map=()=> {
   const [temp,setTemp] = useState([]);
 
   const Test = ["1","2","3","4","5","6","7","8",1,1,1,1,1,1,1,1]
+  const Test2 = [
+    
+  ]
 
+  
   useEffect((longitude,latitude) => {
     const fetchlotaion=()=>{
       if('geolocation' in navigator) {
@@ -131,38 +135,37 @@ let iconurl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
   return (
     <>
     <WeatherBlock>
-
               <Row gutter={[16, 16]}>
-                <Col lg={24} style={{textAlign:"center"}}>
+                <Col span={24} style={{textAlign:"center"}} >
                       {/* <Icon image={iconurl}/> */}
-                      <img style={{width:'120px'}} src= {iconurl} />
+                      <img style={{width:"120px"}} src= {iconurl} />
                   </Col>
-                <Col lg={4} xs={24}>
+                <Col lg={4} md={12} xs={12}>
                   <GridBox1>
-                     강수확률: {dailyData.pop*100}%
+                     강수확률: {Math.round(dailyData.pop*100)}%
                   </GridBox1>
                 </Col>
-                <Col lg={4} xs={24}>
+                <Col lg={4} md={12} xs={12}>
                   <GridBox2>
                   현재 온도: {Math.round(currentData.temp-273.15)}
                   </GridBox2>
                 </Col>
-                <Col lg={4} xs={24}>
+                <Col lg={4} md={12} xs={12}>
                   <GridBox3>  
                   날씨: {weather.description}
                   </GridBox3>
                   </Col>
-                <Col lg={4} xs={24}>
+                <Col lg={4} md={12} xs={12}>
                   <GridBox4>
                   습도: {currentData.humidity}%
                   </GridBox4>
                   </Col>
-                <Col lg={4} xs={24}>
+                <Col lg={4} md={12} xs={12}>
                   <GridBox1>
                   바람: {currentData.wind_speed}m/s
                   </GridBox1>
                   </Col>
-                <Col lg={4} xs={24}>
+                <Col lg={4} md={12} xs={12}>
                   <GridBox2>
                     자외선: {currentData.uvi} {(
                       ()=>{

@@ -25,7 +25,7 @@ function GridCard(props) {
   return (
           <Col lg={6} md={8} sm={12} xs={24} >
             <CardBlock>
-              <div className="testbox"></div>
+              <div className="testbox">더미 이미지</div>
               <h2>더미 타이틀</h2>
               <h4>더미 컨텐츠</h4>
             </CardBlock>
